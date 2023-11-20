@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import com.bluetech.androidbasicapp.R
+import com.bluetech.androidbasicapp.data.source.local.mock.NetworkManager
 import com.bluetech.androidbasicapp.databinding.ActivityMainBinding
+import com.bluetech.androidbasicapp.domain.model.NewsArticle
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,9 +19,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+
         viewModel.articleData.observe(this) {
             println("panda: Result: $it")
             binding.txt.text = it.articles.joinToString(separator = "\n\n-->")
         }
+
+
+       /* val result = NetworkManager.getApi().getTopHeadlines()
+        println(result)*/
     }
 }
