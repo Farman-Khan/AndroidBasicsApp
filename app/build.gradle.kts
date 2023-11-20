@@ -46,6 +46,9 @@ dependencies {
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
     //testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -53,4 +56,7 @@ dependencies {
 
     //gson
     implementation("com.google.code.gson:gson:2.10.1")
+
+    //viewmodel scope
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 }

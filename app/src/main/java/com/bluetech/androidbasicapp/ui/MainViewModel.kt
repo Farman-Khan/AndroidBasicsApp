@@ -3,8 +3,10 @@ package com.bluetech.androidbasicapp.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bluetech.androidbasicapp.data.source.local.mock.getMockArticle
+import androidx.lifecycle.viewModelScope
+import com.bluetech.androidbasicapp.data.source.local.mock.NetworkManager
 import com.bluetech.androidbasicapp.domain.model.NewsArticle
+import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
     private var _articleData = MutableLiveData<NewsArticle>()
@@ -15,7 +17,10 @@ class MainViewModel : ViewModel() {
     }
 
     private fun getArticle() {
-        val response = getMockArticle()
-        _articleData.value = response
+        viewModelScope.launch {
+            // val response = getMockArticle()
+            val response = NetworkManager.getApi().getTopHeadlines()
+            _articleData.value = response
+        }
     }
 }
