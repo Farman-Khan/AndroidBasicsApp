@@ -54,8 +54,9 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-
-
     //gson
     implementation("com.google.code.gson:gson:2.10.1")
+
+    //viewmodel scope
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 }

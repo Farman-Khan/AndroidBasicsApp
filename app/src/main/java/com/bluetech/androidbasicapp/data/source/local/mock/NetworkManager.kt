@@ -20,5 +20,5 @@ interface Api {
 
     // https://newsapi.org/v2/top-headlines?country=us&apiKey=ee8cb583c73e439faade9115309bf5c2
     @GET("/v2/top-headlines?country=us&apiKey=ee8cb583c73e439faade9115309bf5c2")
-    fun getTopHeadlines(): Call<NewsArticle>
+    suspend fun getTopHeadlines(): NewsArticle
 }

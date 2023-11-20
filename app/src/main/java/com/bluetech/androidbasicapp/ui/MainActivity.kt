@@ -24,9 +24,5 @@ class MainActivity : AppCompatActivity() {
             println("panda: Result: $it")
             binding.txt.text = it.articles.joinToString(separator = "\n\n-->")
         }
-
-
-       /* val result = NetworkManager.getApi().getTopHeadlines()
-        println(result)*/
     }
 }
