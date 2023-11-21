@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bluetech.androidbasicapp.BuildConfig.API_KEY
-import com.bluetech.androidbasicapp.data.source.local.mock.NetworkManager
+import com.bluetech.androidbasicapp.data.source.remote.retrofit.NetworkManager
 import com.bluetech.androidbasicapp.domain.model.NewsArticle
 import kotlinx.coroutines.launch
 
@@ -20,7 +19,7 @@ class MainViewModel : ViewModel() {
     private fun getArticle() {
         viewModelScope.launch {
             // val response = getMockArticle()
-            val response = NetworkManager.newsApiService?.getTopHeadlines("us", API_KEY)
+            val response = NetworkManager.getNewsApi().getTopArticles("us")
             _articleData.value = response
         }
     }

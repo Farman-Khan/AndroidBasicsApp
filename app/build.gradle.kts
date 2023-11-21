@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.plugin.extraProperties
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
 plugins {
     id("com.android.application")
@@ -17,8 +17,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        val apiKey = project.findProperty("API_KEY") as String
-        buildConfigField("String","API_KEY", apiKey)
+
+        buildConfigField(
+            "String",
+            "apiKey",
+            gradleLocalProperties(rootDir).getProperty("apiKey")
+        )
     }
 
     buildTypes {
@@ -45,26 +49,29 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
+    //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    //implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
+    //gson
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    //okhttp logging
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    //coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    //viewmodel scope
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 
     //testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    //gson
-    implementation("com.google.code.gson:gson:2.10.1")
-
-    //viewmodel scope
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 }
