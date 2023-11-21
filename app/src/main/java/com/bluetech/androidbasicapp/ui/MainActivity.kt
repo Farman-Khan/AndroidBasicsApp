@@ -3,11 +3,7 @@ package com.bluetech.androidbasicapp.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
-import com.bluetech.androidbasicapp.R
-import com.bluetech.androidbasicapp.data.source.local.mock.NetworkManager
 import com.bluetech.androidbasicapp.databinding.ActivityMainBinding
-import com.bluetech.androidbasicapp.domain.model.NewsArticle
 
 class MainActivity : AppCompatActivity() {
 
