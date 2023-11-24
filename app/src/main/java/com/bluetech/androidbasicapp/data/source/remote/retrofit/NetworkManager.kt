@@ -1,7 +1,7 @@
 package com.bluetech.androidbasicapp.data.source.remote.retrofit
 
 import com.bluetech.androidbasicapp.BuildConfig
-import com.bluetech.androidbasicapp.domain.model.NewsArticle
+import com.bluetech.androidbasicapp.data.dto.NewsArticleDto
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,8 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-object NetworkManager {
-    private const val BASE_URL = "https://newsapi.org/"
+class NetworkManager {
+    //TODO..use https instead of http
+    private val BASE_URL = "http://newsapi.org/"
 
     private val  newsInterceptor = Interceptor { chain ->
         val request = chain.request()
@@ -32,13 +33,13 @@ object NetworkManager {
         else HttpLoggingInterceptor.Level.NONE
     }
 
-    private val newsClient = OkHttpClient
+    private  val newsClient = OkHttpClient
         .Builder()
         .addInterceptor(newsInterceptor)
         .addInterceptor(loggingInterceptor)
         .build()
 
-    private val retrofit = Retrofit.Builder()
+     val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(newsClient)
@@ -51,5 +52,5 @@ interface NewsApi {
     @GET("v2/top-headlines")
     suspend fun getTopArticles(
         @Query("country") country: String,
-    ): NewsArticle
+    ): NewsArticleDto
 }

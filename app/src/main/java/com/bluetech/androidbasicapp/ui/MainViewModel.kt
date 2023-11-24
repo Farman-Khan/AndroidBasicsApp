@@ -4,13 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bluetech.androidbasicapp.data.source.NewsRepository
 import com.bluetech.androidbasicapp.domain.model.NewsArticle
+import com.bluetech.androidbasicapp.domain.repository.NewsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-class MainViewModel @Inject constructor(val repository: NewsRepository ) : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val repository: NewsRepository
+) : ViewModel() {
     private var _articleData = MutableLiveData<NewsArticle>()
     val articleData: LiveData<NewsArticle> = _articleData
 
