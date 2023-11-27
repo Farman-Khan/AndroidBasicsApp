@@ -3,7 +3,6 @@ package com.bluetech.androidbasicapp.data.dto
 import com.bluetech.androidbasicapp.domain.model.Article
 import com.bluetech.androidbasicapp.domain.model.NewsArticle
 
-
 data class NewsArticleDto(
     val status: String?,
     val totalResults: Int?,
