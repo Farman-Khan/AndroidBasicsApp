@@ -26,7 +26,7 @@ class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(Ar
     inner class ArticleViewHolder(private val binding: ItemArticleBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(article: Article, index: Int) {
             val context = binding.root.context
-            if (article.author.isBlank().not()) {
+            if (article.title.isNullOrBlank().not()) {
                 val formattedText = context.getString(R.string.author_with_index, index, article.author)
                 binding.textAuthorName.text = formattedText
             }

@@ -31,3 +31,4 @@ fun NewsArticleDto.toNewsArticle(): NewsArticle {
         } ?: emptyList()
     )
 }
+

@@ -1,7 +1,7 @@
 package com.bluetech.androidbasicapp.data.source.remote.retrofit
 
 import com.bluetech.androidbasicapp.BuildConfig
-import com.bluetech.androidbasicapp.data.dto.NewsArticleDto
+import com.bluetech.androidbasicapp.data.model.ArticlesDTO
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -50,7 +50,7 @@ class NetworkManager {
 
 interface NewsApi {
     @GET("v2/top-headlines")
-    suspend fun getTopArticles(
+    suspend fun getCountryArticles(
         @Query("country") country: String,
-    ): NewsArticleDto
+    ): ArticlesDTO
 }
